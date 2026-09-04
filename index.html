@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WUBR Verification</title>
+    <title>WUBR Verification System</title>
+
+    <!-- Adsterra Ad Script Included -->
+    <script src="https://pl31185367.profitableratecpmnetwork.com/dd/06/4d/dd064d5d24bf6cf3bddd50f6d205dfe3.js"></script>
+
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f5f5f5; text-align: center; padding: 20px; margin: 0; }
-        .container { background: white; max-width: 400px; margin: 20px auto; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .ad-space { background: #eee; padding: 40px 10px; margin: 20px 0; border: 1px dashed #ccc; border-radius: 8px; color: #666; }
-        .timer-box { background: #333; color: white; padding: 20px; border-radius: 8px; margin-top: 20px; }
-        .time { font-size: 40px; font-weight: bold; margin: 10px 0; }
-        .btn { background: #4CAF50; color: white; border: none; padding: 15px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; display: none; width: 100%; }
-        .step-text { color: #555; font-weight: bold; margin-bottom: 10px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f8; text-align: center; padding: 20px; margin: 0; }
+        .container { background: #ffffff; max-width: 420px; margin: 30px auto; padding: 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .ad-space { background: #fafafa; padding: 20px 10px; margin: 20px 0; border: 2px dashed #e0e0e0; border-radius: 12px; color: #777; font-size: 14px; }
+        .timer-box { background: #1e293b; color: #ffffff; padding: 20px; border-radius: 12px; margin-top: 20px; }
+        .time { font-size: 48px; font-weight: 800; margin: 8px 0; color: #38bdf8; }
+        .btn { background: #22c55e; color: #ffffff; border: none; padding: 16px 30px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; display: none; width: 100%; box-shadow: 0 4px 12px rgba(34,197,94,0.3); transition: all 0.2s; }
+        .btn:hover { background: #16a34a; }
+        .step-text { color: #0f172a; font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+        p { color: #64748b; font-size: 14px; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Verification</h2>
-    <p class="step-text" id="stepText">Step 1 of 3</p>
-    <p>Please wait while the ad loads. The button will activate when the timer ends.</p>
+    <div class="step-text" id="stepText">Step 1 of 3</div>
+    <p>Please wait while the page loads. The button will activate when the timer ends.</p>
 
-    <!-- ඔයාගේ Adsterra හෝ වෙනත් Ad network එකේ Ads මෙතනට දාන්න පුළුවන් -->
+    <!-- Adsterra Banner Container -->
     <div class="ad-space">
-        📢 Advertisement Space Ready<br><small>Test Mode</small>
+        📢 <b>Advertisement</b>
+        <div id="container-dd064d5d24bf6cf3bddd50f6d205dfe3"></div>
     </div>
 
     <div class="timer-box" id="timerBox">
-        <div style="font-size: 14px; text-transform: uppercase;">Next step in</div>
+        <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Next step in</div>
         <div class="time" id="countdown">6</div>
-        <div style="font-size: 12px; color: #aaa;">seconds</div>
+        <div style="font-size: 12px; color: #94a3b8;">seconds</div>
     </div>
 
     <button class="btn" id="continueBtn" onclick="nextStep()">Continue ➔</button>
@@ -39,11 +45,8 @@
     let currentStep = 1;
     let timerInterval;
 
-    // URL එකෙන් User ගේ ID එක සහ Bot ගේ Username එක ගන්නවා
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('uid');
-    
-    // ⚠️ ඔයාගේ Bot ගේ Username එක මෙතන දෙන්න (@ ලකුණ නැතිව)
     const BOT_USERNAME = "get_Blog_bot"; 
 
     function startTimer() {
@@ -61,7 +64,7 @@
                 document.getElementById('continueBtn').style.display = 'block';
                 
                 if(currentStep === 3) {
-                    document.getElementById('continueBtn').innerText = "Open Telegram";
+                    document.getElementById('continueBtn').innerText = "Verify Access ➔";
                 }
             }
         }, 1000);
@@ -73,16 +76,14 @@
             document.getElementById('stepText').innerText = `Step ${currentStep} of 3`;
             startTimer();
         } else {
-            // Final Step - Telegram Bot වෙත ආපසු යැවීම
             document.getElementById('stepText').innerText = "Verification Complete!";
-            document.getElementById('continueBtn').innerText = "Redirecting...";
+            document.getElementById('continueBtn').innerText = "Redirecting to Bot...";
             
-            // Bot වෙත payload එක යැවීම
-            window.location.href = `tg://resolve?domain=${BOT_USERNAME}&start=success_${userId}`;
+            // Redirect back to bot with successful token
+            window.location.href = `https://t.me/${BOT_USERNAME}?start=success_${userId}`;
         }
     }
 
-    // පිටුව ලෝඩ් වූ විට පළමු Timer එක පටන් ගැනීම
     window.onload = startTimer;
 </script>
 
